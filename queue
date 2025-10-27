@@ -1,0 +1,63 @@
+#include <iostream>
+using namespace std;
+
+void arrayInsertion(int a[], int &n, int i, int x) {
+
+    for (int j = n; j > i; j--) {
+        a[j] = a[j - 1];
+    }
+    a[i] = x;
+    n++;
+}
+
+void arrayDeletion(int a[], int &n, int i) {
+ 
+    for (int j = i; j < n - 1; j++) {
+        a[j] = a[j + 1];
+    }
+    n--;
+}
+
+void enqueue(int a[], int &n, int x) {
+    int i = 0;
+
+    while (i < n && x >= a[i]) {
+        i++;
+    }
+
+    arrayInsertion(a, n, i, x);
+}
+
+int dequeue(int a[], int &n) {
+    if (n == 0) {
+        cout << "Queue empty!\n";
+        return -1;
+    }
+    int x = a[0]; 
+    arrayDeletion(a, n, 0);
+    return x;
+}
+
+void display(int a[], int n) {
+    for (int i = 0; i < n; i++)
+        cout << a[i] << " ";
+    cout << endl;
+}
+
+int main() {
+    int a[100];
+    int n = 0;
+
+    enqueue(a, n, 30);
+    enqueue(a, n, 10);
+    enqueue(a, n, 20);
+    enqueue(a, n, 5);
+
+    cout << "Queue: ";
+    display(a, n);
+
+    cout << "Dequeued: " << dequeue(a, n) << endl;
+
+    cout << "Queue after dequeue: ";
+    display(a, n);
+}
