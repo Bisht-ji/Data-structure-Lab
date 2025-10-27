@@ -47,14 +47,11 @@ void display(int a[], int n) {
 int main() {
     int a[100];
     int n = 0;
-    enqueue(a,nd,45);
+    enqueue(a,n,45);
     enqueue(a,n,30);
     enqueue(a,n,25);
     enqueue(a,n,20);
    
-   
-    
-
     cout << "Queue: ";
     display(a, n);
 
