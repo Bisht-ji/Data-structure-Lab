@@ -1,0 +1,84 @@
+#include <iostream>
+using namespace std;
+
+int p(int a, int n){
+    if(n==0){
+        return 1;
+    }
+    else{
+        int x = p(a,n/2);
+        if(n%2==0){
+            return x*x;
+        }
+        else{
+            return a*x*x;
+        }
+    }
+}
+int s1(int n){
+    if (n==0){
+        return 0;
+    }
+    return (n%10)+s1(n/10);
+}
+int arsum(int ch[], int n) {
+    if (n == 0) {
+        return ch[0];
+    }
+    return ch[n] + arsum(ch, n - 1);
+}
+int gcd(int a, int b) {
+    if (a == 0) {
+        return b;
+    } 
+    else if (b == 0) {
+        return a;
+    } 
+    else if (a > b) {
+        return gcd(a % b, b);
+    } 
+    else if (b > a) {
+        return gcd(a, b % a);
+    } 
+    else {
+        return a;
+    }
+}
+int fact(int n){
+    if (n == 0){
+        return 1;
+    }
+    return n*fact(n-1);
+}
+int fib(int n) {
+    if(n==1) {
+        return 0;
+    }
+    else if (n==2){
+        return 1;
+    }
+    else{
+        return fib(n - 1) + fib(n - 2);
+    }
+}
+int sum(int n) {
+    if (n == 0) {
+        return 0;
+    } else {
+        return n + sum(n - 1);
+    }
+}
+int main(){
+    int a=2 ,n=3;
+    cout<<p(a,n)<<endl;
+    int num = 12345;
+    cout<<s1(num)<<endl;
+    int ch[5] = {1, 2, 3, 4, 5};
+    cout<<arsum(ch, 4)<<endl;
+    cout<<gcd(36,24)<<endl;
+    cout<<fact(5)<<endl;
+    cout<<fib(7)<<endl;
+    cout<<sum(10)<<endl;
+    return 0;
+}
+
